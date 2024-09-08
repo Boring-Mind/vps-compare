@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from typing import Final
 
-from commons.environment_variables import get_env_variable
+from commons.environment_variables import EnvVariable
 from dotenv import load_dotenv
 
 # Load environment variables from .env file placed in the BASE_DIR folder.
@@ -26,10 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
+SECRET_KEY = EnvVariable.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = EnvVariable.get("DJANGO_DEBUG", default=False, cast=bool)
 
 ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
 
@@ -141,3 +142,12 @@ REST_FRAMEWORK = {
         "jwt_authentication.auth_backends.JWTAuthentication",
     ]
 }
+
+# Authentication settings
+JWT_SECRET_KEY = EnvVariable.get("JWT_SECRET_KEY")
+JWT_ALGORITHM = EnvVariable.get("JWT_ALGORITHM")
+JWT_TTL_SECONDS: Final[int] = EnvVariable.get("JWT_TTL_SECONDS", cast=int)
+JWT_VALIDATE_AUD: Final[bool] = EnvVariable.get("JWT_VALIDATE_AUD", cast=bool)
+JWT_AUDIENCE = EnvVariable.get("JWT_AUDIENCE")
+JWT_VALIDATE_ISS: Final[bool] = EnvVariable.get("JWT_VALIDATE_ISS", cast=bool)
+JWT_ISSUER = EnvVariable.get("JWT_ISSUER")
