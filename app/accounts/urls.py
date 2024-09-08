@@ -1,10 +1,52 @@
-from accounts.views import LoginView, LogoutView, ProtectedView, TestView
+from accounts.views import (
+    AccountTemplateView,
+    ChangePasswordView,
+    LoginPageTemplateView,
+    LoginView,
+    LogoutView,
+    ProtectedView,
+)
+from django.contrib.auth.views import (
+    PasswordResetCompleteView,
+    PasswordResetConfirmView,
+    PasswordResetDoneView,
+    PasswordResetView,
+)
 from django.urls import path
 
 app_name = "accounts"
 urlpatterns = [
-    path("login/", LoginView.as_view(), name="login"),
+    path("login-api/", LoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(), name="logout"),
-    path("test/", TestView.as_view(), name="test"),
+    # path(
+    #     "logout/",
+    #     LogoutView.as_view(next_page="accounts:login_template"),
+    #     name="logout",
+    # ),
+    path("login/", LoginPageTemplateView.as_view(), name="login_template"),
     path("protected/", ProtectedView.as_view(), name="protected"),
+    path("account/", AccountTemplateView.as_view(), name="account_template"),
+    path("change-password/", ChangePasswordView.as_view(), name="change_password"),
+    # Password related views
+    # ToDo: finish them
+    path(
+        "password-reset/",
+        PasswordResetView.as_view(template_name="password_reset.html"),
+        name="password-reset",
+    ),
+    path(
+        "password-reset-done/",
+        PasswordResetDoneView.as_view(template_name="password_reset_done.html"),
+        name="password_reset_done",
+    ),
+    path(
+        "password-reset-confirm/<uidb64>/<token>/",
+        PasswordResetConfirmView.as_view(template_name="password_reset_confirm.html"),
+        name="password_reset_confirm",
+    ),
+    path(
+        "password-reset-complete/",
+        PasswordResetCompleteView.as_view(template_name="password_reset_complete.html"),
+        name="password_reset_complete",
+    ),
 ]

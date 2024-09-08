@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Third-party apps
-    "rest_framework",
     # Our custom apps
     "accounts",
 ]
@@ -133,3 +132,6 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# ToDo: replace it with a real email backend in production
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

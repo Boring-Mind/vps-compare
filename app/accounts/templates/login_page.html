@@ -3,20 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Login page</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
 </head>
 <body>
-<form action="{% url 'accounts:login' %}" method="POST">
-    {% csrf_token %}
-    <label for="username-input"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" id="username-input" required>
+<header>
+    <nav>
+        <a href="/">Home page</a>
+        <ul>
+            <li><a href="{% url 'accounts:account_template' %}">Account</a></li>
+            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section>
+        <form action="{% url 'accounts:login' %}" method="POST">
+            {% csrf_token %}
+            <label for="username-input"><b>Username</b></label>
+            <input type="text" placeholder="email@example.com" name="username"
+                   id="username-input" required>
 
-    <label for="password-input"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="password-input" required>
+            <label for="password-input"><b>Password</b></label>
+            <input type="password" placeholder="**************" name="password"
+                   id="password-input" required>
 
-    <button type="submit">Login</button>
-    <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-</form>
+            <button type="submit">Login</button>
+            <p>
+                <small>Forgot your password?</small>
+            </p>
+        </form>
+    </section>
+</main>
 </body>
 </html>

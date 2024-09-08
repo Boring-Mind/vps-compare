@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account page</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+</head>
+<body>
+<header>
+    <nav>
+        <a href="/">Home page</a>
+        <ul>
+            <li><a href="{% url 'accounts:account_template' %}">Account</a></li>
+            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <section>
+        <form action="{% url 'accounts:change_password' %}" method="POST">
+            {% csrf_token %}
+            <p><b>Change password</b></p>
+            <label><b>New password</b></label>
+            <input type="password" placeholder="**************" name="new_password1"
+                   id="new-password1-input" required>
+
+            <label><b>Repeat new password</b></label>
+            <input type="password" placeholder="**************" name="new_password2"
+                   id="new-password2-input" required>
+
+            <button type="submit">Change</button>
+        </form>
+    </section>
+</main>
+</body>
+</html>
