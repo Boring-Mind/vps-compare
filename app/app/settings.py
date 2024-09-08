@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-from typing import Final
 
 from commons.environment_variables import EnvVariable
 from dotenv import load_dotenv
@@ -48,7 +47,6 @@ INSTALLED_APPS = [
     "rest_framework",
     # Our custom apps
     "accounts",
-    "jwt_authentication",
 ]
 
 MIDDLEWARE = [
@@ -135,19 +133,3 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "jwt_authentication.auth_backends.JWTAuthentication",
-    ]
-}
-
-# Authentication settings
-JWT_SECRET_KEY = EnvVariable.get("JWT_SECRET_KEY")
-JWT_ALGORITHM = EnvVariable.get("JWT_ALGORITHM")
-JWT_TTL_SECONDS: Final[int] = EnvVariable.get("JWT_TTL_SECONDS", cast=int)
-JWT_VALIDATE_AUD: Final[bool] = EnvVariable.get("JWT_VALIDATE_AUD", cast=bool)
-JWT_AUDIENCE = EnvVariable.get("JWT_AUDIENCE")
-JWT_VALIDATE_ISS: Final[bool] = EnvVariable.get("JWT_VALIDATE_ISS", cast=bool)
-JWT_ISSUER = EnvVariable.get("JWT_ISSUER")

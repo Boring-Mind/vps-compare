@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body>
+<form action="{% url 'accounts:login' %}" method="POST">
+    {% csrf_token %}
+    <label for="username-input"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" id="username-input" required>
+
+    <label for="password-input"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" id="password-input" required>
+
+    <button type="submit">Login</button>
+    <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+</form>
+</body>
+</html>
