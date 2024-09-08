@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     # Our custom apps
     "accounts",
+    "jwt_authentication",
 ]
 
 MIDDLEWARE = [
