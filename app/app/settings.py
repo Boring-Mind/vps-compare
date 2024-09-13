@@ -133,5 +133,16 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# ToDo: replace it with a real email backend in production
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# Email settings
+
+if DEBUG:
+    # If DEBUG is True, use console email backend. Which is perfect for development
+    # and testing.
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+else:
+    # If DEBUG is False, use real SMTP email backend.
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = EnvVariable.get("EMAIL_HOST")
+    EMAIL_PORT = EnvVariable.get("EMAIL_PORT", cast=int)
+    EMAIL_HOST_USER = EnvVariable.get("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = EnvVariable.get("EMAIL_HOST_PASSWORD")
