@@ -25,6 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
+# A good example of Django production hardening is here:
+# https://github.com/cookiecutter/cookiecutter-django/blob/master/%7B%7Bcookiecutter.project_slug%7D%7D/config/settings/production.py
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = EnvVariable.get("DJANGO_SECRET_KEY")
 
@@ -87,6 +90,22 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
+}
+
+# Logging configuration
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "DEBUG" if DEBUG is True else "WARNING",
+    },
 }
 
 

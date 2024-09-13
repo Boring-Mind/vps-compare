@@ -15,6 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.views import (
+    PasswordResetCompleteView,
+    PasswordResetConfirmView,
+    PasswordResetDoneView,
+    PasswordResetView,
+)
 from django.urls import include, path
 
 from app.views import IndexView
@@ -23,4 +29,27 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")),
     path("", IndexView.as_view(), name="index_page"),
+    # ToDo: Move password-related endpoints to accounts app.
+    #  The problem with them is related to default Django HTML templates.
+    #  We need to adjust URLs in them to include "account:" prefix.
+    path(
+        "password-reset/",
+        PasswordResetView.as_view(),
+        name="password_reset",
+    ),
+    path(
+        "password-reset-done/",
+        PasswordResetDoneView.as_view(),
+        name="password_reset_done",
+    ),
+    path(
+        "password-reset-confirm/<uidb64>/<token>/",
+        PasswordResetConfirmView.as_view(),
+        name="password_reset_confirm",
+    ),
+    path(
+        "password-reset-complete/",
+        PasswordResetCompleteView.as_view(),
+        name="password_reset_complete",
+    ),
 ]
