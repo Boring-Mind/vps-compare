@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # Third-party apps
     # Our custom apps
     "accounts",
+    "vps_providers",
 ]
 
 MIDDLEWARE = [
