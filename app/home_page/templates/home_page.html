@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VPS Compare</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" />
+    <script src="https://unpkg.com/hyperscript.org@0.9.12" defer></script>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a id="navbar-home-button" class="navbar-item" href="#">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L16.5 8.5L12 15L7.5 8.5L12 2Z" fill="#00d1b2" />
+              <path d="M12 9L19.5 10.5L17 18L12 14L7 18L4.5 10.5L12 9Z" fill="#00bfa5" />
+            </svg>
+            VPS Compare
+          </a>
+          <a class="navbar-item" href="#">Other button</a>
+        </div>
+        <div class="navbar-end">
+          <div id="navbar-account-dropdown" class="navbar-item dropdown">
+            <div class="dropdown-trigger">
+              <button
+                class="button"
+                _="on click toggle .is-active on #navbar-account-dropdown"
+                aria-haspopup="true"
+                aria-controls="dropdown-menu"
+              >
+                <span class="icon is-small">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2" />
+                    <path
+                      d="M6 18c0-3 3-5 6-5s6 2 6 5"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span>Your Username</span>
+                <span class="icon is-small">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M7 10l5 5 5-5"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" role="menu">
+              <div class="dropdown-content">
+                <a hfer="#" class="dropdown-item">Settings</a>
+                <a hfer="#" class="dropdown-item">Change password</a>
+                <hr class="dropdown-divider" />
+                <a hfer="#" class="dropdown-item">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Company</th>
+            <th>Name</th>
+            <th>vCPU</th>
+            <th>RAM, GB</th>
+            <th>Disk, GB</th>
+            <th>OS available</th>
+            <th>Location</th>
+            <th>Price, $/mo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>1</th>
+            <td>Hostinger</td>
+            <td>VPS-XS</td>
+            <td>2</td>
+            <td>4</td>
+            <td>20</td>
+            <td>Linux</td>
+            <td>🇩🇪</td>
+            <td>15.78</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>OVH Cloud</td>
+            <td>VPS 16GB</td>
+            <td>4</td>
+            <td>16</td>
+            <td>100</td>
+            <td>Linux, Windows</td>
+            <td>🇨🇿</td>
+            <td>31.84</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>DigitalOcean</td>
+            <td>Basic Droplet</td>
+            <td>2</td>
+            <td>8</td>
+            <td>50</td>
+            <td>Linux</td>
+            <td>🇺🇸</td>
+            <td>25.00</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>Linode</td>
+            <td>Standard</td>
+            <td>4</td>
+            <td>16</td>
+            <td>80</td>
+            <td>Linux</td>
+            <td>🇬🇧</td>
+            <td>40.00</td>
+          </tr>
+          <tr>
+            <th>5</th>
+            <td>AWS</td>
+            <td>t3.medium</td>
+            <td>2</td>
+            <td>8</td>
+            <td>30</td>
+            <td>Linux, Windows</td>
+            <td>🇮🇪</td>
+            <td>27.50</td>
+          </tr>
+          <tr>
+            <th>6</th>
+            <td>Vultr</td>
+            <td>High Frequency</td>
+            <td>3</td>
+            <td>12</td>
+            <td>60</td>
+            <td>Linux</td>
+            <td>🇳🇱</td>
+            <td>35.00</td>
+          </tr>
+          <tr>
+            <th>7</th>
+            <td>Google Cloud</td>
+            <td>n2-standard-4</td>
+            <td>4</td>
+            <td>16</td>
+            <td>100</td>
+            <td>Linux, Windows</td>
+            <td>🇸🇬</td>
+            <td>45.20</td>
+          </tr>
+          <tr>
+            <th>8</th>
+            <td>Azure</td>
+            <td>B2s</td>
+            <td>2</td>
+            <td>4</td>
+            <td>32</td>
+            <td>Linux, Windows</td>
+            <td>🇯🇵</td>
+            <td>24.75</td>
+          </tr>
+          <tr>
+            <th>9</th>
+            <td>Hetzner</td>
+            <td>CX21</td>
+            <td>3</td>
+            <td>8</td>
+            <td>40</td>
+            <td>Linux</td>
+            <td>🇫🇮</td>
+            <td>20.50</td>
+          </tr>
+          <tr>
+            <th>10</th>
+            <td>Scaleway</td>
+            <td>Dev1-M</td>
+            <td>4</td>
+            <td>16</td>
+            <td>100</td>
+            <td>Linux, Windows</td>
+            <td>🇫🇷</td>
+            <td>37.60</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
